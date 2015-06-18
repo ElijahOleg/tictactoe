@@ -1,4 +1,6 @@
+
 var ref = new Firebase("https://platytictac.firebaseio.com/adsjfasdjfsadjfklasdfjlsdakfjalskdjfkldsaflk");
+
 var gameRef = ref.child("game");
 
 $(document).ready(function(){
@@ -55,14 +57,17 @@ gameRef.on("value", assignPlayers);
 
 function assignPlayers(snap) {
   var game = snap.val();
+
   // console.log("Snap Val:", game);
   if (!game) {
     return;
   }
   Game.players = game.players;
+
   if(Game.state.currentTurn === undefined){
   Game.state.currentTurn = 'x';
   }
+
   Game.x = game.players.x;
   Game.o = game.players.o;
 
@@ -83,7 +88,9 @@ Game.nextPlayer = function() {
 
 var isNewUser = true;
 ref.onAuth(function(authData) {
+
   // console.log("Auth:", authData);
+
   if (authData && isNewUser) {
     // save the user's profile into Firebase so we can list users,
     // use them in Security and Firebase Rules, and show profiles
