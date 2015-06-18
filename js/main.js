@@ -12,16 +12,18 @@ $(document).ready(function(){
         console.log("Authenticated successfully with payload:", authData);
       }
     });
+    gameRef.child("state").on("value", function(snap){
+    Game.state.currentTurn = snap.val().currentTurn;
+    });
   });
 
   $(".cell").on("click", function() {
+    console.log(Game.state.currentTurn);
     var currentMark = Game.currentMark();
     if (Game.yourTurn()) {
       $(this).addClass(currentMark).text(currentMark);
       Game.state.currentTurn = Game.state.currentTurn === 'x' ? 'o' : 'x';
-      console.log(Game.state.currentTurn);
       updateState();
-      console.log(Game.state.currentTurn);
     }
   });
 });
@@ -31,10 +33,7 @@ var Game = {};
 Game.state = { currentTurn: 'x' };
 
 function updateState() {
-  gameRef.child('state').update(Game.state);
-  gameRef.child("state").on("value", function(snap){
-  Game.state = snap.val();
-  });
+  gameRef.child('state').set(Game.state);
 }
 
 Game.currentMark = function() {
@@ -98,7 +97,7 @@ ref.onAuth(function(authData) {
     //   provider: authData.provider,
     //   name: getName(authData)
     // });
-    gameRef.once("value", function(snap) {
+    gameRef.on("value", function(snap) {
       assignPlayers(snap);
       Game.currentUsername = authData.twitter.username;
       var options = {}, nextPlayer = Game.nextPlayer();
