@@ -28,42 +28,35 @@
         <!-- Add your site or application content here -->
         <h2>Tic-Tac-Toe</h2>
         <button type="button" name="login" id="Login">Login</button>
-        <button type="button" name="play" class="button btn-md btn-primary hidden">New Game</button>
-        <h3 class="hidden">
-          First player is x.
+        <h3 class="player">
+          First player is <span id="first-player"></span>
         </h3>
-        <div class="wrapper row hidden">
+        <h3 class="player">
+          Second player is <span id="second-player"></span>
+        </h3>
+        <div class="wrapper row">
           <div class="row">
-            <div class="col-xs-4 col-xs-offset-2 x">
-              x
+            <div class="col-xs-4 col-xs-offset-2 cell" data-xy="0,0">
             </div>
-            <div class="col-xs-4">
-              o
+            <div class="col-xs-4 cell" data-xy="0,1">
             </div>
-            <div class="col-xs-4">
-              o
+            <div class="col-xs-4 cell" data-xy="0,2">
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-4 col-xs-4 col-xs-offset-2">
-
+            <div class="col-xs-4 col-xs-4 col-xs-offset-2 cell" data-xy="1,0">
             </div>
-            <div class="col-xs-4 x">
-              x
+            <div class="col-xs-4 cell" data-xy="1,1">
             </div>
-            <div class="col-xs-4">
-              o
+            <div class="col-xs-4 cell" data-xy="1,2">
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-4 col-xs-4 col-xs-offset-2">
-
+            <div class="col-xs-4 col-xs-4 col-xs-offset-2 cell" data-xy="2,0">
             </div>
-            <div class="col-xs-4">
-              o
+            <div class="col-xs-4 cell" data-xy="2,1">
             </div>
-            <div class="col-xs-4 x">
-              x
+            <div class="col-xs-4 cell" data-xy="2,2">
             </div>
           </div>
         </div>

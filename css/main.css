@@ -306,3 +306,7 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+.cell {
+  cursor: pointer;
+}
